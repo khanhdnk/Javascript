@@ -1,12 +1,6 @@
-var myVar;
-myVar = 42;
-if (typeof myVar === 'string') {
-    // TypeScript narrows the type to string inside this block
-    console.log(myVar.length);
+// `keyof StringMap` resolves to `string` here
+function createStringPair(property, value) {
+    var _a;
+    return _a = {}, _a[property] = value, _a;
 }
-else {
-    // TypeScript knows that myVar is not a string here
-}
-myVar.variable();
-// Using a type assertion to tell TypeScript the variable's type
-var strLength = myVar.length;
+console.log(createStringPair('name', 'ok'));
