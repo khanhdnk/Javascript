@@ -1,7 +1,13 @@
-type StringMap = { [key: string]: unknown };
-// `keyof StringMap` resolves to `string` here
-function createStringPair(property: keyof StringMap, value: string): StringMap {
-  return { [property]: value };
+interface User {
+  type: 'user';
+  name: string;
+  age: number;
+  occupation: string;
 }
 
-console.log(createStringPair('name', 'ok'))
+let string: string = 'usersssss';
+let bool: boolean;
+let type: User['type'] = 'user'
+if (string == type){
+  console.log
+}
