@@ -1,6 +1,6 @@
 import { useState } from "react";
 import './../App.css'
-import addEmployee from "../crud_operations/addEmployee";
+import addEmployee from "../crud_operations/AddEmployee";
 
 function PostEmployeeCompo(){
     const [addEmployeeId, setaddEmployeeId] = useState('');
