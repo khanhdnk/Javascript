@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import GetEployeesCompo from './components/GetListEmployeeCompo'
+import GetAnEmployeeCompo from './components/AEmployeeCompo'
+import UpdateEmployeeCompo from './components/ChangeEmployeeCompo'
+import PostEmployeeCompo from './components/PostComponent'
+import DeleteEmployeeCompo from './components/DeleteEmployeeCompo'
+import Navbarhtml from './components/NavBar'
+import {Route, Routes} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Navbarhtml/>
+      <Routes>
+        <Route path='/' element={<GetEployeesCompo/>}/>
+        <Route path='/getAnEmployee' element={<GetAnEmployeeCompo/>}/>
+        <Route path='/update' element={<UpdateEmployeeCompo/>}/>
+        <Route path='/post' element={<PostEmployeeCompo/>}/>
+        <Route path='/delete' element={<DeleteEmployeeCompo/>}/>
+      </Routes>
+
+
     </div>
   );
 }
