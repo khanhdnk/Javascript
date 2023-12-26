@@ -10,9 +10,11 @@ function PostEmployeeCompo(){
     
 
     async function handleSubmitAddEmployee (){
-        let addEmployeeResult = await addEmployee(parseInt(addEmployeeId), addEmployeeName);
-        if (addEmployeeResult !== undefined)
-        setPostResult(addEmployeeResult);
+        const addEmployeeResult = await addEmployee(parseInt(addEmployeeId), addEmployeeName);
+        if (addEmployeeResult !== undefined){
+            setPostResult(addEmployeeResult);
+
+        }
     }
 
     const handleSubmit: React.FormEventHandler<HTMLFormElement>  = e => {

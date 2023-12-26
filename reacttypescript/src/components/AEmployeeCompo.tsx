@@ -8,9 +8,10 @@ function GetAnEmployeeCompo(){
     const [getAnEmployeeResult, setGetAnEmployeeResult] = useState<UserInformation|undefined>(undefined);
 
     async function handleSubmitGetAnEmployee (){
-        let resultGetAnEmployee = await getAnEmployee(parseInt(employeeID));
-        if (resultGetAnEmployee !== undefined)
-        setGetAnEmployeeResult(resultGetAnEmployee);
+        const resultGetAnEmployee = await getAnEmployee(parseInt(employeeID));
+        if (resultGetAnEmployee != undefined){
+            setGetAnEmployeeResult(resultGetAnEmployee);
+        }
     }
 
     const handleSubmit: React.FormEventHandler<HTMLFormElement>  = e => {

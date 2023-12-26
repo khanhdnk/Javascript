@@ -5,10 +5,9 @@ export function DeleteEmployeeCompo(): JSX.Element{
     const [deleteEmployeeId, setDeleteEmployeeId] = useState('');
     const [deleteResult, setDeleteResult] = useState('');
     async function handleSubmitDeleteEmployee (){
-        let deleteEmployeeResult = await deleteEmployee(parseInt(deleteEmployeeId));
+        const deleteEmployeeResult = await deleteEmployee(parseInt(deleteEmployeeId));
         if (deleteEmployeeResult !== undefined){
             setDeleteResult(deleteEmployeeResult);
-
         }
     }
 

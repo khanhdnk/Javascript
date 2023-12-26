@@ -5,14 +5,13 @@ import changeEmployee from "../crud_operations/ChangeEmployee";
 function UpdateEmployeeCompo(){
     const [updatedEmployeeId, setupdatedEmployeeId] = useState('');
     const [updateEmployeeName, setUpdateEmployeeName] = useState('');
-    const [updateResult, setUpdateResult] = useState('');
+    const [updateResult, setUpdateResult] = useState("");
 
 
     async function handleSubmitUpdateEmployee (){
-        let changEmployeeResult = await changeEmployee(parseInt(updatedEmployeeId), updateEmployeeName);
+        const changEmployeeResult = await changeEmployee(parseInt(updatedEmployeeId), updateEmployeeName);
         if (changEmployeeResult !== undefined){
             setUpdateResult(changEmployeeResult);
-
         }
     }
 

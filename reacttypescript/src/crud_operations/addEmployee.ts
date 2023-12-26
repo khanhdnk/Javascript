@@ -9,7 +9,7 @@ async function addEmployee(id:number,name: string){
             },
             body: JSON.stringify({
                 id,
-                name: name
+                name
             })
             
         });
@@ -18,7 +18,7 @@ async function addEmployee(id:number,name: string){
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const responseFromServer: ResponseForGetListEmployees = await response.json();
-        if (!responseFromServer.status){
+        if (!responseFromServer.success){
             throw new Error("Can't retrieve data")
         }
         return "Successful";

@@ -9,10 +9,9 @@ function GetEmployeesCompo(){
     const [expand, setExpand] = useState(false);
 
     async function handleSubmitGetAllEmployee (){
-        let responseGetListEmployee = await getListEmployee();
+        const responseGetListEmployee = await getListEmployee();
         if (responseGetListEmployee!== undefined){
             setListOfEmployees(responseGetListEmployee);
-
         }
         setExpand(true);
     }   
@@ -29,11 +28,15 @@ function GetEmployeesCompo(){
 
                 <div >
                     <table>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                        </tr>
-                        {listOfEmployees && listOfEmployees.map(employee=><tr><td>{employee.id}</td><td>{employee.name}</td></tr>)}
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {listOfEmployees && listOfEmployees.map(employee=><tr key={employee.id}><td>{employee.id}</td><td>{employee.name}</td></tr>)}
+                        </tbody>
                     </table>
                 </div>
             </div>

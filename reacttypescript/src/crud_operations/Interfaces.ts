@@ -9,7 +9,7 @@ export interface UserInformation{
 }
 
 export interface ResponseForGetListEmployees{
-    status: boolean,
+    success: boolean,
     data: (UserInformation[]|UserInformation),
     notice: string
 }

@@ -9,6 +9,9 @@ async function getListEmployee(): Promise<UserInformation[]|undefined>{
             }
         });
         const responseEmployeeList:ResponseForGetListEmployees = await response.json();
+        if (!responseEmployeeList.success){
+            throw new Error("Can't retrieve data")
+        }
         const employeeList: UserInformation[]= responseEmployeeList.data as UserInformation[]; 
         return employeeList
     }

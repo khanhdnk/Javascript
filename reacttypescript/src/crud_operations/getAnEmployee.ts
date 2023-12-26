@@ -9,12 +9,14 @@ async function getAnEmployee(id: number):Promise<UserInformation|undefined>{
             }
             
         });
-
+        
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const responseFromServer:ResponseForGetListEmployees = await response.json();
-        if (!responseFromServer.status){
+        console.log("hello")
+        console.log(responseFromServer.data)
+        if (!responseFromServer.success){
             throw new Error("Can't retrieve data")
         }
         return responseFromServer.data as UserInformation;
