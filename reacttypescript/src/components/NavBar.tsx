@@ -59,6 +59,13 @@ export function Navbarhtml() {
             <span className="nav-item">Delete an employee</span>
           </a></li>
         </Link>
+        <Link to={"/login"}>
+
+          <li><a>
+            <i className="fas fa-tasks"></i>
+            <span className="nav-item">Login</span>
+          </a></li>
+        </Link>
       </ul>
     </nav>
 
