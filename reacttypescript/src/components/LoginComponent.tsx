@@ -1,15 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import LoginFeature from "../crud_operations/LoginFeature";
+import Cookies from "js-cookie";
+import {useNavigate} from 'react-router-dom';
 function LoginComponent(){
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const [login, setLogin] = useState(false);
+    const navigation = useNavigate();
 
-    async function handleSubmitLogin() {
-        // const loginResult = await 
+    const handleRedirect = () =>{
+        navigation('/delete');
+        
     }
+    useEffect(() => {
+        if (Cookies.get('token')){
+            handleRedirect();
+        }
+    }, [login]);
+
+    
+    async function handleSubmitLogin() {
+        const loginResult = await LoginFeature(userName, password);
+        setLogin(true);
+        
+    }
+
+
 
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault()
     }
+
 
     return(
         <>

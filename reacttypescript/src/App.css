@@ -73,6 +73,7 @@ a:hover{
 .logout{
   position: absolute;
   bottom: 0;
+  cursor: pointer;
 }
 
 .App{

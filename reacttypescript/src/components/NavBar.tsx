@@ -9,9 +9,14 @@ import { Link } from 'react-router-dom';
 import downloadimg from './../image/downloading.png'
 import './../App.css'
 import apiIcon from './../image/api.png'
+import Cookies from "js-cookie";
+
 
 
 export function Navbarhtml() {
+  function Logout(){
+    Cookies.remove('token');
+  }
   return (
     <>
         <div className="container">
@@ -66,6 +71,11 @@ export function Navbarhtml() {
             <span className="nav-item">Login</span>
           </a></li>
         </Link>
+
+        <li><a className="logout" onClick={Logout}>
+          <i className="fas fa-sign-out-alt"></i>
+          <span className="nav-item">Log out</span>
+        </a></li>
       </ul>
     </nav>
 

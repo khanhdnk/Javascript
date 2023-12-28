@@ -15,6 +15,7 @@ export function DeleteEmployeeCompo(): JSX.Element{
         e.preventDefault()
     }
 
+
     return(
         <>
             <form onSubmit={handleSubmit}>
@@ -24,6 +25,7 @@ export function DeleteEmployeeCompo(): JSX.Element{
                         <input value={deleteEmployeeId} type="text" id="did" name="did" onChange={e=> setDeleteEmployeeId(e.target.value)}/><br/>
                         <input className="input_button" type="submit" value="Submit" onClick={handleSubmitDeleteEmployee}/>
                         <p>{deleteResult}</p>
+
 
                     </div>
 
