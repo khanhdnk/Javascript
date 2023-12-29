@@ -32,6 +32,7 @@ async function LoginFeature(userName: string, password: string){
             //     httpOnly: true, // Prevents client-side JavaScript access
             //     secure: process.env.NODE_ENV === 'production', // Only for HTTPS in production
             // });
+            console.log(token);
             Cookies.set('token', token, { expires: 7});
 
         }
