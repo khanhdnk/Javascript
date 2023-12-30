@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ResponseForGetListEmployees, isApiError } from "./Interfaces";
+import { AuthenticationResponse, isApiError } from "./Interfaces";
 import Cookies from 'js-cookie';
 
 
@@ -21,12 +21,14 @@ async function LoginFeature(userName: string, password: string){
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        const responseFromServer: ResponseForGetListEmployees = await response.json();
+        const responseFromServer: AuthenticationResponse = await response.json();
         if (!responseFromServer.success){
             throw new Error("Can't retrieve data")
         }
         else{
-            const token: string = responseFromServer.data as string;
+            const token= responseFromServer.token;
+            const refreshToken = responseFromServer.refreshToken 
+            localStorage.setItem('refreshToken', refreshToken);
             // Cookies.set('jwtToken', token, {
             //     expires: 7, // Expires in 7 days
             //     httpOnly: true, // Prevents client-side JavaScript access

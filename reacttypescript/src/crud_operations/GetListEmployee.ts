@@ -8,7 +8,7 @@ async function getListEmployee(): Promise<UserInformation[]|undefined>{
                 'x-api-key': "hello",
                 'Content-Type': 'application/json',
                 'authorization': `Bearer ${Cookies.get('token')}` as string
-                // 'authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE3MDM4Mjc2NTV9.LcGlB0lsayD8jTxFisk261iKU9HNRWK4yZq0p8czD2w` as string
+                // 'authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE3MDM4NTA5OTEsImV4cCI6MTcwMzg1MTA5MX0.TCND02KLk78B_pMOej6HnySqNL7S7UoE6ZU-z_QoCB0` as string
             }
         });
         const responseEmployeeList:ResponseForGetListEmployees = await response.json();

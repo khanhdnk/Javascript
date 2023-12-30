@@ -14,6 +14,12 @@ export interface ResponseForGetListEmployees{
     notice: string
 }
 
+export interface AuthenticationResponse{
+    success: boolean,
+    token: string,
+    refreshToken: string
+}
+
 
 export function isApiError(error: any): error is ApiError {
     return 'status' in error && 'message' in error;
