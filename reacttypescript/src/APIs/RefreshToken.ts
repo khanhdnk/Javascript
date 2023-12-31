@@ -30,11 +30,9 @@ async function RefreshToken(){
             //     httpOnly: true, // Prevents client-side JavaScript access
             //     secure: process.env.NODE_ENV === 'production', // Only for HTTPS in production
             // });
-            console.log(token);
             Cookies.set('token', token, { expires: 7});
-
+            return token;
         }
-        return "Successful";
         
     }catch(error){
         if (isApiError(error)){

@@ -24,6 +24,11 @@ export interface AuthenticationResponse{
     refreshToken: string
 }
 
+export interface OperationResult{
+    success: boolean,
+    notice: string
+}
+
 export function isAccessTokenExpires():boolean{
     const accessToken = Cookies.get('token');
     if (accessToken){
