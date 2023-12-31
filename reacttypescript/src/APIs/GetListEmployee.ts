@@ -1,6 +1,10 @@
-import { isApiError, UserInformation, ResponseForGetListEmployees } from "./Interfaces";
+import { isApiError, UserInformation, ResponseForGetListEmployees, isAccessTokenExpires } from "./Interfaces";
+import RefreshToken from "./RefreshToken";
 import Cookies from "js-cookie";
 async function getListEmployee(): Promise<UserInformation[]|undefined>{
+    if (isAccessTokenExpires()){
+        await RefreshToken();
+    }
     try{
         const response = await fetch(`http://localhost:3001/api/employees/`,{
             method: 'GET',

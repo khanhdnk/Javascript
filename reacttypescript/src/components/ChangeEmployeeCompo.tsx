@@ -1,6 +1,6 @@
 import { useState } from "react";
 import './../App.css';
-import changeEmployee from "../crud_operations/ChangeEmployee";
+import changeEmployee from "../APIs/ChangeEmployee";
 
 function UpdateEmployeeCompo(){
     const [updatedEmployeeId, setupdatedEmployeeId] = useState('');

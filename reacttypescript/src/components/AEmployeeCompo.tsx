@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { UserInformation } from "../crud_operations/Interfaces";
+import { UserInformation } from "../APIs/Interfaces";
 import './../App.css'
-import getAnEmployee from "../crud_operations/GetAnEmployee";
+import getAnEmployee from "../APIs/GetAnEmployee";
 
 function GetAnEmployeeCompo(){
     const [employeeID, setEmployeeId] = useState('');

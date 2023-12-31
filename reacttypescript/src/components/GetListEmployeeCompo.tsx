@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './../App.css'
-import getListEmployee from "../crud_operations/GetListEmployee";
-import { UserInformation } from "../crud_operations/Interfaces";
+import getListEmployee from "../APIs/GetListEmployee";
+import { UserInformation } from "../APIs/Interfaces";
 
 
 function GetEmployeesCompo(){

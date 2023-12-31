@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import LoginFeature from "../crud_operations/LoginFeature";
+import LoginFeature from "../APIs/LoginFeature";
 import Cookies from "js-cookie";
 import {useNavigate} from 'react-router-dom';
 function LoginComponent(){

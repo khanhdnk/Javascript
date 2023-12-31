@@ -1,6 +1,6 @@
 import { useState } from "react";
 import './../App.css'
-import deleteEmployee from "../crud_operations/DeleteEmployee";
+import deleteEmployee from "../APIs/DeleteEmployee";
 export function DeleteEmployeeCompo(): JSX.Element{
     const [deleteEmployeeId, setDeleteEmployeeId] = useState('');
     const [deleteResult, setDeleteResult] = useState('');

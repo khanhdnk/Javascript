@@ -26,7 +26,7 @@ async function LoginFeature(userName: string, password: string){
             throw new Error("Can't retrieve data")
         }
         else{
-            const token= responseFromServer.token;
+            const token = responseFromServer.token;
             const refreshToken = responseFromServer.refreshToken 
             localStorage.setItem('refreshToken', refreshToken);
             // Cookies.set('jwtToken', token, {
