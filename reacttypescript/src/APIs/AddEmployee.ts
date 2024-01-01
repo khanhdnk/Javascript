@@ -4,7 +4,6 @@ async function addEmployee(id:number,name: string){
         const response = await fetch(`http://localhost:3001/api/employees/add/`,{
             method: 'POST',
             headers: {
-                'x-api-key': "hello",
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({

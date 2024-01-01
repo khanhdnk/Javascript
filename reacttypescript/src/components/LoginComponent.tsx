@@ -2,35 +2,40 @@ import { useState, useEffect } from "react";
 import LoginFeature from "../APIs/LoginFeature";
 import Cookies from "js-cookie";
 import {useNavigate} from 'react-router-dom';
+import checkRefreshAndAccess from "../APIs/CheckRefreshAndAccess";
 function LoginComponent(){
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const [accessGranted, setAccessGranted] = useState(false);
     const [login, setLogin] = useState(false);
     const navigation = useNavigate();
-
-    const handleRedirect = () =>{
-        navigation('/');
-        
-    }
+    
     useEffect(() => {
-        if (Cookies.get('token')){
-            handleRedirect();
+        const control = async () => {
+        const checkResult = await checkRefreshAndAccess();
+        if (checkResult) {
+            navigation('/');
         }
-    }, [login]);
+        };
 
+        control();
+    }, [login]);
     
     async function handleSubmitLogin() {
         const loginResult = await LoginFeature(userName, password);
-        setLogin(true);
-        
+        console.log(loginResult);
+        if (loginResult){
+            setLogin(true);
+        }
     }
-
-
 
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault()
     }
-
+    
+    if (login){
+        return(<></>);
+    }
 
     return(
         <>

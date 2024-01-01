@@ -24,22 +24,16 @@ async function LoginFeature(userName: string, password: string){
         }
         const responseFromServer: AuthenticationResponse = await response.json();
         if (!responseFromServer.success){
-            throw new Error("Can't retrieve data")
+            return false;
         }
         else{
             const token = responseFromServer.token;
             const refreshToken = responseFromServer.refreshToken 
             localStorage.setItem('refreshToken', refreshToken);
-            // Cookies.set('jwtToken', token, {
-            //     expires: 7, // Expires in 7 days
-            //     httpOnly: true, // Prevents client-side JavaScript access
-            //     secure: process.env.NODE_ENV === 'production', // Only for HTTPS in production
-            // });
-            console.log(token);
             Cookies.set('token', token, { expires: 7});
 
         }
-        return "Successful";
+        return true;
         
     }catch(error){
         if (isApiError(error)){

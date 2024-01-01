@@ -15,6 +15,7 @@ function GetEmployeesCompo() {
         const control = async () => {
         const checkResult = await checkRefreshAndAccess();
         if (!checkResult) {
+          console.log("out")
             navigation('/login');
         } else {
             setAccessGranted(true);

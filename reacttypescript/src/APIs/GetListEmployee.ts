@@ -15,7 +15,6 @@ async function getListEmployee(): Promise<UserInformation[]|undefined>{
         const response = await fetch(`http://localhost:3001/api/employees/`,{
             method: 'GET',
             headers: {
-                'x-api-key': "hello",
                 'Content-Type': 'application/json',
                 'authorization': `Bearer ${token}` as string
                 // 'authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE3MDM4NTA5OTEsImV4cCI6MTcwMzg1MTA5MX0.TCND02KLk78B_pMOej6HnySqNL7S7UoE6ZU-z_QoCB0` as string
