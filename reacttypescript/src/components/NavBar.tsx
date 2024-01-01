@@ -10,6 +10,7 @@ import downloadimg from './../image/downloading.png'
 import './../App.css'
 import apiIcon from './../image/api.png'
 import Cookies from "js-cookie";
+import LogoutFeature from '../APIs/LogoutFeature';
 
 
 
@@ -72,7 +73,7 @@ export function Navbarhtml() {
           </a></li>
         </Link>
 
-        <li><a className="logout" onClick={Logout}>
+        <li><a className="logout" onClick={() => {LogoutFeature(); Logout()}}>
           <i className="fas fa-sign-out-alt"></i>
           <span className="nav-item">Log out</span>
         </a></li>
