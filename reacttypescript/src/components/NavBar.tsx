@@ -11,13 +11,40 @@ import './../App.css'
 import apiIcon from './../image/api.png'
 import Cookies from "js-cookie";
 import LogoutFeature from '../APIs/LogoutFeature';
+import {useNavigate} from 'react-router-dom';
+import checkRefreshToken from '../APIs/CheckRefreshToken';
+import { useEffect, useState } from 'react';
 
 
 
 export function Navbarhtml() {
+  const [linkTo, setLinkTo] = useState<string>('/');
+  const [isLogin, setIsLogin] = useState(1);
   function Logout(){
     Cookies.remove('token');
   }
+  const navigation = useNavigate();
+  async function checkAuthenAndAuthor(url: string){
+    let isEligible = await checkRefreshToken();
+    if (!isEligible){
+      return '/login'
+    }
+    return url;
+  }
+  
+  async function fetchLinkTo() {
+    let isEligible = await checkRefreshToken();
+    if (!isEligible) {
+      setLinkTo('/login');
+    } else {
+      setLinkTo('/');
+    }
+  }
+  useEffect(() => {
+
+    fetchLinkTo();
+  }, [isLogin]);
+
   return (
     <>
         <div className="container">
@@ -29,7 +56,7 @@ export function Navbarhtml() {
         </a></li>
 
         
-        <Link to={"/"}>
+        <Link to={'/'}>
         <li><a>
           
           <span className="nav-item"><img className="" src={downloadimg} width="30"></img>Get eployees</span>
@@ -73,10 +100,17 @@ export function Navbarhtml() {
           </a></li>
         </Link>
 
-        <li><a className="logout" onClick={() => {LogoutFeature(); Logout()}}>
+        {/* <li onClick={() => {setIsLogin(previous => previous + 1); console.log("hello")}}><a>
+            <i className="fas fa-tasks"></i>
+            <span className="nav-item">rerender</span>
+          </a></li> */}
+
+        <li><a className="logout" onClick={() => {LogoutFeature(); Logout(); navigation('/login')}}>
           <i className="fas fa-sign-out-alt"></i>
           <span className="nav-item">Log out</span>
         </a></li>
+
+
       </ul>
     </nav>
 

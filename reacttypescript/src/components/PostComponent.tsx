@@ -1,12 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './../App.css'
 import addEmployee from "../APIs/AddEmployee";
-
+import checkRefreshAndAccess from "../APIs/CheckRefreshAndAccess";
+import { useNavigate } from "react-router-dom";
 function PostEmployeeCompo(){
     const [addEmployeeId, setaddEmployeeId] = useState('');
     const [addEmployeeName, setaddEmployeeName] = useState('');
     const [postResult, setPostResult] = useState('');
+    const [accessGranted, setAccessGranted] = useState(false);
 
+    const navigation = useNavigate();
+    useEffect(() => {
+        const control = async () => {
+        const checkResult = await checkRefreshAndAccess();
+        if (!checkResult) {
+            navigation('/login');
+        } else {
+            setAccessGranted(true);
+        }
+        };
+
+        control();
+    }, []);
+
+    if (!accessGranted) {
+        return null; // or you can render a loading spinner or a message
+    }
     
 
     async function handleSubmitAddEmployee (){

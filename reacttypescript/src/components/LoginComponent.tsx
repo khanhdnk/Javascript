@@ -9,7 +9,7 @@ function LoginComponent(){
     const navigation = useNavigate();
 
     const handleRedirect = () =>{
-        navigation('/delete');
+        navigation('/');
         
     }
     useEffect(() => {
