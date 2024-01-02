@@ -2,6 +2,7 @@ import { isApiError, UserInformation, ResponseForGetListEmployees, isAccessToken
 import RefreshToken from "./RefreshToken";
 import checkAccessToken from "./CheckAccessToken";
 import Cookies from "js-cookie";
+import handlerError from "../Ultils/HandleErrors";
 async function getListEmployee(): Promise<UserInformation[]|undefined>{
     try{
         // let token : string = '';
@@ -16,7 +17,8 @@ async function getListEmployee(): Promise<UserInformation[]|undefined>{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'authorization': `Bearer ${token && token}` as string
+                'authorization': `Bearer ${token && token}` as string,
+                'credentials': 'include'
                 // 'authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE3MDM4NTA5OTEsImV4cCI6MTcwMzg1MTA5MX0.TCND02KLk78B_pMOej6HnySqNL7S7UoE6ZU-z_QoCB0` as string
             }
         });
@@ -28,10 +30,7 @@ async function getListEmployee(): Promise<UserInformation[]|undefined>{
         return employeeList
     }
     catch (error) {
-        if (isApiError(error)){
-            console.error('Error fetching data:', error.message);
-            throw error;
-        }
+        handlerError(error);
     }
 }
 export default getListEmployee;
