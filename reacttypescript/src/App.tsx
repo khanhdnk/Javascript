@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import './App.css';
 import GetEployeesCompo from './components/GetListEmployeeCompo'
 import GetAnEmployeeCompo from './components/AEmployeeCompo'
@@ -8,8 +9,11 @@ import DeleteEmployeeCompo from './components/DeleteEmployeeCompo'
 import LoginComponent from './components/LoginComponent';
 import Navbarhtml from './components/NavBar'
 import {Route, Routes} from 'react-router-dom'
+import checkRefreshAndAccess from './APIs/CheckRefreshAndAccess';
 
 function App() {
+  const [accessGranted, setAccessGranted] = useState(false);
+  setInterval(checkRefreshAndAccess,15000 ) 
   return (
     <div className='App'>
       <Navbarhtml/>

@@ -9,9 +9,11 @@ async function checkRefreshAndAccess() {
         const isAccessTokenValid = await checkAccessToken();
         if (!isAccessTokenValid){
             RefreshToken();
+            console.log("token refreshed");
         }
         return true
     }
+    console.log("Unauthorized");
     return false;
 }
 

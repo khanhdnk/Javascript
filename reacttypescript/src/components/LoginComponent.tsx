@@ -23,7 +23,6 @@ function LoginComponent(){
     
     async function handleSubmitLogin() {
         const loginResult = await LoginFeature(userName, password);
-        console.log(loginResult);
         if (loginResult){
             setLogin(true);
         }
