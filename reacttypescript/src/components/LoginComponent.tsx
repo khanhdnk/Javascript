@@ -10,16 +10,16 @@ function LoginComponent(){
     const [login, setLogin] = useState(false);
     const navigation = useNavigate();
     
-    useEffect(() => {
-        const control = async () => {
-        const checkResult = await checkRefreshAndAccess();
-        if (checkResult) {
-            navigation('/');
-        }
-        };
+    // useEffect(() => {
+    //     const control = async () => {
+    //     const checkResult = await checkRefreshAndAccess();
+    //     if (checkResult) {
+    //         navigation('/');
+    //     }
+    //     };
 
-        control();
-    }, [login]);
+    //     control();
+    // }, [login]);
     
     async function handleSubmitLogin() {
         const loginResult = await LoginFeature(userName, password);
