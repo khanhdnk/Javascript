@@ -12,6 +12,7 @@ async function LoginFeature(userName: string, password: string){
                 'x-api-key': "hello",
                 'Content-Type': 'application/json'
             },
+            credentials: "include",
             body: JSON.stringify({
                 userName,
                 password
@@ -27,10 +28,6 @@ async function LoginFeature(userName: string, password: string){
             return false;
         }
         else{
-            // const token = responseFromServer.token;
-            const refreshToken = responseFromServer.refreshToken 
-            localStorage.setItem('refreshToken', refreshToken);
-            // Cookies.set('token', token, { expires: 7});
 
         }
         return true;

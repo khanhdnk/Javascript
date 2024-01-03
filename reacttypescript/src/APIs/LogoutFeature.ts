@@ -7,10 +7,9 @@ async function LogoutFeature(){
     try{
         const response = await fetch(`http://localhost:3001/api/logout`,{
             method: 'POST',
+            credentials: 'include',
             headers: {
-                'x-api-key': "hello",
                 'Content-Type': 'application/json',
-                'authorization': `${localStorage.getItem('refreshToken')}`
             }
             
         });

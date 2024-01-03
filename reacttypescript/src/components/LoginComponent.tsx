@@ -3,6 +3,7 @@ import LoginFeature from "../APIs/LoginFeature";
 import Cookies from "js-cookie";
 import {useNavigate} from 'react-router-dom';
 import checkRefreshAndAccess from "../APIs/CheckRefreshAndAccess";
+import checkToken from "../APIs/CheckAccessToken";
 function LoginComponent(){
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -10,21 +11,22 @@ function LoginComponent(){
     const [login, setLogin] = useState(false);
     const navigation = useNavigate();
     
-    // useEffect(() => {
-    //     const control = async () => {
-    //     const checkResult = await checkRefreshAndAccess();
-    //     if (checkResult) {
-    //         navigation('/');
-    //     }
-    //     };
-
-    //     control();
-    // }, [login]);
+    useEffect(() => {
+        const resultChecking =async () => {
+            const result = await checkToken();
+            if (result){
+                navigation('/')
+            }else{
+            }
+          };
+          resultChecking();
+    });
     
     async function handleSubmitLogin() {
         const loginResult = await LoginFeature(userName, password);
         if (loginResult){
             setLogin(true);
+
         }
     }
 
