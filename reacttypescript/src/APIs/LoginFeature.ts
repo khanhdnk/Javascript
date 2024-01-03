@@ -27,10 +27,10 @@ async function LoginFeature(userName: string, password: string){
             return false;
         }
         else{
-            const token = responseFromServer.token;
+            // const token = responseFromServer.token;
             const refreshToken = responseFromServer.refreshToken 
             localStorage.setItem('refreshToken', refreshToken);
-            Cookies.set('token', token, { expires: 7});
+            // Cookies.set('token', token, { expires: 7});
 
         }
         return true;

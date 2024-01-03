@@ -13,7 +13,7 @@ import checkRefreshAndAccess from './APIs/CheckRefreshAndAccess';
 
 function App() {
   const [accessGranted, setAccessGranted] = useState(false);
-  setInterval(checkRefreshAndAccess,15000 ) 
+  // setInterval(checkRefreshAndAccess,15000 ) 
   return (
     <div className='App'>
       <Navbarhtml/>
