@@ -11,23 +11,23 @@ function GetEmployeesCompo() {
     const [accessGranted, setAccessGranted] = useState(false);
     
     const navigation = useNavigate();
-    useEffect(() => {
-        const control = async () => {
-        const checkResult = await checkRefreshAndAccess();
-        if (!checkResult) {
-          console.log("out")
-            navigation('/login');
-        } else {
-            setAccessGranted(true);
-        }
-        };
+    // useEffect(() => {
+    //     const control = async () => {
+    //     const checkResult = await checkRefreshAndAccess();
+    //     if (!checkResult) {
+    //       console.log("out")
+    //         navigation('/login');
+    //     } else {
+    //         setAccessGranted(true);
+    //     }
+    //     };
 
-        control();
-    }, []);
+    //     control();
+    // }, []);
 
-    if (!accessGranted) {
-        return null; // or you can render a loading spinner or a message
-    }
+    // if (!accessGranted) {
+    //     return null; // or you can render a loading spinner or a message
+    // }
 
     async function handleSubmitGetAllEmployee() {
         const responseGetListEmployee = await getListEmployee();
