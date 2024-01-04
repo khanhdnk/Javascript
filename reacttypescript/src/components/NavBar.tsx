@@ -10,8 +10,9 @@ import {useNavigate} from 'react-router-dom';
 export function Navbarhtml() {
   const navigation = useNavigate();
 
-  function Logout(){
-    LogoutFeature(); navigation('/login');  
+  async function Logout(){
+    await LogoutFeature(); 
+    navigation('/login');  
   }
 
   return (
