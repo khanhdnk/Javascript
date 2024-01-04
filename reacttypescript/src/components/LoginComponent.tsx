@@ -3,7 +3,7 @@ import LoginFeature from "../APIs/LoginFeature";
 import Cookies from "js-cookie";
 import {useNavigate} from 'react-router-dom';
 import checkRefreshAndAccess from "../APIs/CheckRefreshAndAccess";
-import checkToken from "../APIs/CheckAccessToken";
+import checkToken from "../APIs/validateToken";
 function LoginComponent(){
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');

@@ -1,5 +1,4 @@
-import exp from "constants";
-import checkAccessToken from "./CheckAccessToken";
+import checkAccessToken from "./validateToken";
 import checkRefreshToken from "./CheckRefreshToken";
 import RefreshToken from "./RefreshToken";
 

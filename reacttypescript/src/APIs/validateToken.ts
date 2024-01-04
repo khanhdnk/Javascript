@@ -1,17 +1,14 @@
-import { useState } from "react";
-import { AuthenticationResponse, isApiError, OperationResult } from "./Interfaces";
-import Cookies from 'js-cookie';
+import { OperationResult } from "./Interfaces";
+import handlerError from "../Ultils/HandleErrors";
 
 
-async function checkAccessToken(){
+async function validateToken(){
     try{
         const response = await fetch(`http://localhost:3001/api/checkToken`,{
             method: 'POST',
             credentials: 'include',
             headers: {
-                'x-api-key': "hello",
                 'Content-Type': 'application/json',
-                'authorization': `Bearer ${Cookies.get('token')}`
             }
             
         });
@@ -22,20 +19,15 @@ async function checkAccessToken(){
         const responseFromServer: OperationResult = await response.json();
         if (responseFromServer.success){
             return true;
-
         }
         else{
             return false;
         }
         
     }catch(error){
-        if (isApiError(error)){
-            console.error('Error while processing:', error.message);
-            throw error;
-
-        }
+        handlerError(error);
     }
 
 }
 
-export default checkAccessToken;
+export default validateToken;

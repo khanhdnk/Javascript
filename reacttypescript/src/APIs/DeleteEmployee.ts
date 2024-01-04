@@ -1,3 +1,4 @@
+import handlerError from "../Ultils/HandleErrors";
 import { isApiError, ResponseForGetListEmployees } from "./Interfaces";
 
 async function deleteEmployee (id:number): Promise<string|undefined>
@@ -6,7 +7,6 @@ async function deleteEmployee (id:number): Promise<string|undefined>
         const response = await fetch(`http://localhost:3001/api/employees/delete/${id}`,{
             method: 'DELETE',
             headers: {
-                'x-api-key': "hello",
                 'Content-Type': 'application/json'
             }
             
@@ -21,12 +21,7 @@ async function deleteEmployee (id:number): Promise<string|undefined>
         }
         return "Successful";
     }catch(error){
-        if (isApiError(error)) {
-            console.error('API Error: ', error.message, 'Status: ', error.status);
-            // Handle specific API errors here
-            throw error;
-            // return error.message;
-        }
+        handlerError(error);
     }
 }
 

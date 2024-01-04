@@ -1,8 +1,10 @@
+import handlerError from "../Ultils/HandleErrors";
 import { isApiError, ResponseForGetListEmployees } from "./Interfaces";
 async function changeEmployee(id: number, name: string){
     try{
         const response = await fetch(`http://localhost:3001/api/employees/edit/${id}`,{
             method: 'PUT',
+            credentials: 'include',
             headers: {
                 'x-api-key': "hello",
                 'Content-Type': 'application/json'
@@ -21,15 +23,9 @@ async function changeEmployee(id: number, name: string){
             throw new Error("Can't retrieve data")
         }
         return "Successful";
-         
-        
 
     }catch(error){
-        if (isApiError(error)){
-            console.error('Error fetching data:', error.message);
-            throw error;
-
-        }
+        handlerError(error);
     }
 }
 

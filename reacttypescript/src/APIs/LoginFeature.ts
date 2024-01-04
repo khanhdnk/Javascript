@@ -1,6 +1,5 @@
-import { useState } from "react";
+import handlerError from "../Ultils/HandleErrors";
 import { AuthenticationResponse, isApiError } from "./Interfaces";
-import Cookies from 'js-cookie';
 
 
 async function LoginFeature(userName: string, password: string){
@@ -33,11 +32,7 @@ async function LoginFeature(userName: string, password: string){
         return true;
         
     }catch(error){
-        if (isApiError(error)){
-            console.error('Error while processing:', error.message);
-            throw error;
-
-        }
+        handlerError(error);
     }
 
 

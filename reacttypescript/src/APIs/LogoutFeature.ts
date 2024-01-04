@@ -1,7 +1,5 @@
-import { useState } from "react";
-import { AuthenticationResponse, isApiError } from "./Interfaces";
-import Cookies from 'js-cookie';
-
+import { AuthenticationResponse} from "./Interfaces";
+import handlerError from "../Ultils/HandleErrors";
 
 async function LogoutFeature(){
     try{
@@ -27,11 +25,7 @@ async function LogoutFeature(){
         return "Successful";
         
     }catch(error){
-        if (isApiError(error)){
-            console.error('Error while processing:', error.message);
-            throw error;
-
-        }
+        handlerError(error);
     }
 }
 

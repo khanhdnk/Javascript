@@ -1,4 +1,5 @@
-import { isApiError, UserInformation, ResponseForGetListEmployees } from "./Interfaces";
+import handlerError from "../Ultils/HandleErrors";
+import { UserInformation, ResponseForGetListEmployees } from "./Interfaces";
 async function getAnEmployee(id: number):Promise<UserInformation|undefined>{
     try{
         const response = await fetch(`http://localhost:3001/api/employees/${id}`,{
@@ -14,8 +15,6 @@ async function getAnEmployee(id: number):Promise<UserInformation|undefined>{
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const responseFromServer:ResponseForGetListEmployees = await response.json();
-        console.log("hello")
-        console.log(responseFromServer.data)
         if (!responseFromServer.success){
             throw new Error("Can't retrieve data")
         }
@@ -23,11 +22,7 @@ async function getAnEmployee(id: number):Promise<UserInformation|undefined>{
         
 
     }catch(error){
-        if (isApiError(error)){
-            console.error('Error fetching data:', error.message);
-            throw error;
-
-        }
+        handlerError(error);
     }
 }
 

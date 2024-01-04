@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { AuthenticationResponse, isApiError , ResponseForGetListEmployees} from "./Interfaces";
+import { ResponseForGetListEmployees} from "./Interfaces";
 import Cookies from 'js-cookie';
+import handlerError from "../Ultils/HandleErrors";
 
 
 async function RefreshToken(){
@@ -25,21 +25,12 @@ async function RefreshToken(){
         }
         else{
             const token = responseFromServer.data as string;
-            // Cookies.set('jwtToken', token, {
-            //     expires: 7, // Expires in 7 days
-            //     httpOnly: true, // Prevents client-side JavaScript access
-            //     secure: process.env.NODE_ENV === 'production', // Only for HTTPS in production
-            // });
             Cookies.set('token', token, { expires: 7});
             return token;
         }
         
     }catch(error){
-        if (isApiError(error)){
-            console.error('Error while processing:', error.message);
-            throw error;
-
-        }
+        handlerError(error);
     }
 }
 

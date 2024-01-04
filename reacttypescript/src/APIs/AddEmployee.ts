@@ -1,8 +1,10 @@
-import { isApiError, ResponseForGetListEmployees } from "./Interfaces";
+import handlerError from "../Ultils/HandleErrors";
+import { ResponseForGetListEmployees } from "./Interfaces";
 async function addEmployee(id:number,name: string){
     try{
         const response = await fetch(`http://localhost:3001/api/employees/add/`,{
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -23,11 +25,7 @@ async function addEmployee(id:number,name: string){
         return "Successful";
         
     }catch(error){
-        if (isApiError(error)){
-            console.error('Error while processing:', error.message);
-            throw error;
-
-        }
+        handlerError(error);
     }
 }
 

@@ -4,7 +4,7 @@ import getListEmployee from "../APIs/GetListEmployee";
 import { UserInformation } from "../APIs/Interfaces";
 import checkRefreshAndAccess from "../APIs/CheckRefreshAndAccess";
 import { useNavigate } from "react-router-dom";
-import checkToken from "../APIs/CheckAccessToken";
+import checkToken from "../APIs/validateToken";
 
 function GetEmployeesCompo() {
     const [listOfEmployees, setListOfEmployees] = useState<UserInformation[] | undefined>(undefined);

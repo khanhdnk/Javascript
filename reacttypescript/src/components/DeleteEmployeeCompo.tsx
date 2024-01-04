@@ -1,8 +1,8 @@
 import { useState,useEffect } from "react";
 import './../App.css'
 import deleteEmployee from "../APIs/DeleteEmployee";
-import checkRefreshAndAccess from "../APIs/CheckRefreshAndAccess";
 import { useNavigate } from "react-router-dom";
+import validateToken from "../APIs/validateToken";
 export function DeleteEmployeeCompo(){
     const [deleteEmployeeId, setDeleteEmployeeId] = useState('');
     const [deleteResult, setDeleteResult] = useState('');
@@ -10,16 +10,15 @@ export function DeleteEmployeeCompo(){
 
     const navigation = useNavigate();
     useEffect(() => {
-        const control = async () => {
-        const checkResult = await checkRefreshAndAccess();
-        if (!checkResult) {
-            navigation('/login');
-        } else {
+        const resultChecking =async () => {
+          const result = await validateToken();
+          if (result){
             setAccessGranted(true);
-        }
+          }else{
+            navigation('/login')
+          }
         };
-
-        control();
+        resultChecking();
     }, []);
 
     if (!accessGranted) {
