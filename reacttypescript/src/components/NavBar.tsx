@@ -69,7 +69,7 @@ export function Navbarhtml() {
           </span></li>
         </Link>
 
-        <li><span className="logout nav-section" onClick={() => {Logout()}}>
+        <li onClick={() => {Logout()}}><span className="logout nav-section" >
           <i className="fas fa-sign-out-alt"></i>
           <span className="nav-item">Log out</span>
         </span></li>
