@@ -1,5 +1,5 @@
 import handlerError from "../Ultils/HandleErrors";
-import { isApiError, ResponseForGetListEmployees } from "./Interfaces";
+import { ResponseForGetListEmployees } from "./Interfaces";
 async function changeEmployee(id: number, name: string){
     try{
         const response = await fetch(`http://localhost:3001/api/employees/edit/${id}`,{

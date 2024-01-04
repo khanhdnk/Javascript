@@ -5,7 +5,6 @@ import checkToken from "../APIs/validateToken";
 function LoginComponent(){
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
-    const [accessGranted, setAccessGranted] = useState(false);
     const [login, setLogin] = useState(false);
     const navigation = useNavigate();
     
@@ -18,7 +17,7 @@ function LoginComponent(){
             }
           };
           resultChecking();
-    },[login]);
+    },[login, navigation]);
     
     async function handleSubmitLogin() {
         const loginResult = await LoginFeature(userName, password);

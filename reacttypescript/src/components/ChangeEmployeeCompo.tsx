@@ -20,7 +20,7 @@ function UpdateEmployeeCompo(){
           }
         };
         resultChecking();
-    }, []);
+    }, [navigation]);
 
     if (!accessGranted) {
         return null; 

@@ -1,5 +1,5 @@
 import handlerError from "../Ultils/HandleErrors";
-import { isApiError, ResponseForGetListEmployees } from "./Interfaces";
+import { ResponseForGetListEmployees } from "./Interfaces";
 
 async function deleteEmployee (id:number): Promise<string|undefined>
 {

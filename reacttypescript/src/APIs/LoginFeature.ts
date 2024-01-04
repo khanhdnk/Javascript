@@ -1,5 +1,5 @@
 import handlerError from "../Ultils/HandleErrors";
-import { AuthenticationResponse, isApiError } from "./Interfaces";
+import { AuthenticationResponse} from "./Interfaces";
 
 
 async function LoginFeature(userName: string, password: string){

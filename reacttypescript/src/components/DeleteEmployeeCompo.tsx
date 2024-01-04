@@ -19,7 +19,7 @@ export function DeleteEmployeeCompo(){
           }
         };
         resultChecking();
-    }, []);
+    }, [navigation]);
 
     if (!accessGranted) {
         return null;

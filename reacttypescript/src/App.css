@@ -45,13 +45,13 @@ nav{
   font-size: 18px;
   text-transform: uppercase;
 }
-a{
+.nav-section{
   position: relative;
   color: rgb(85, 83, 83);
   font-size: 14px;
   display: table;
   width: 280px;
-  padding: 10px;
+  padding: 20px;
 }
 nav .fas{
   position: relative;
@@ -67,7 +67,7 @@ nav .fas{
   margin-left: 10px;
   text-align: center;
 }
-a:hover{
+.nav-section:hover{
   background: #eee;
 }
 .logout{

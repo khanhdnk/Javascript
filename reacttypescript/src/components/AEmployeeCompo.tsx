@@ -20,14 +20,14 @@ function GetAnEmployeeCompo(){
           }
         };
         resultChecking();
-    }, []);
+    }, [navigation]);
 
     if (!accessGranted) {
         return null;
     }
     async function handleSubmitGetAnEmployee (){
         const resultGetAnEmployee = await getAnEmployee(parseInt(employeeID));
-        if (resultGetAnEmployee != undefined){
+        if (resultGetAnEmployee !== undefined){
             setGetAnEmployeeResult(resultGetAnEmployee);
         }
     }

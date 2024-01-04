@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import GetEployeesCompo from './components/GetListEmployeeCompo'
 import GetAnEmployeeCompo from './components/AEmployeeCompo'
@@ -11,7 +10,6 @@ import Navbarhtml from './components/NavBar'
 import {Route, Routes} from 'react-router-dom'
 
 function App() {
-  const [accessGranted, setAccessGranted] = useState(false);
   return (
     <div className='App'>
       <Navbarhtml/>

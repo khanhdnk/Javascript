@@ -2,98 +2,77 @@ import { Link } from 'react-router-dom';
 import downloadimg from './../image/downloading.png'
 import './../App.css'
 import apiIcon from './../image/api.png'
-import Cookies from "js-cookie";
 import LogoutFeature from '../APIs/LogoutFeature';
 import {useNavigate} from 'react-router-dom';
-import checkRefreshToken from '../APIs/CheckRefreshToken';
-import { useEffect, useState } from 'react';
 
 
 
 export function Navbarhtml() {
-  const [linkTo, setLinkTo] = useState<string>('/');
-  const [isLogin, setIsLogin] = useState(1);
   const navigation = useNavigate();
-  async function checkAuthenAndAuthor(url: string){
-    let isEligible = await checkRefreshToken();
-    if (!isEligible){
-      return '/login'
-    }
-    return url;
-  }
-  
-  async function fetchLinkTo() {
-    let isEligible = await checkRefreshToken();
-    if (!isEligible) {
-      setLinkTo('/login');
-    } else {
-      setLinkTo('/');
-    }
-  }
-  useEffect(() => {
 
-    fetchLinkTo();
-  }, [isLogin]);
+  function Logout(){
+    LogoutFeature(); navigation('/login');  
+  }
 
   return (
     <>
         <div className="container">
     <nav>
       <ul>
-        <li><a className="logo">
+        <li><span className="logo">
           <img src={apiIcon} alt=""/>
           <span className="nav-item">DashBoard</span>
-        </a></li>
+        </span></li>
 
         
         <Link to={'/'}>
-        <li><a>
+        <li><span className='nav-section'>
           
-          <span className="nav-item"><img className="" src={downloadimg} width="30"></img>Get eployees</span>
-        </a></li>
+          <span className="nav-item"><img className="" src={downloadimg} width="30" alt='img'></img>Get eployees</span>
+        </span></li>
         </Link>
         <Link to={"/getAnEmployee"}>
-          <li><a>
+          <li><span className='nav-section'>
             <i className="fas fa-user"></i>
             <span className="nav-item">Get an eployee</span>
-          </a></li>
+          </span></li>
 
         </Link>
 
         <Link to={"/update"}>
 
-          <li><a>
+          <li><span className='nav-section'>
             <i className="fas fa-wallet"></i>
             <span className="nav-item">Update an employee</span>
-          </a></li>
+          </span></li>
         </Link>
 
         <Link to={"/post"}>
-          <li><a>
+          <li><span className='nav-section'>
             <i className="fas fa-chart-bar"></i>
             <span className="nav-item">Add an employee</span>
-          </a></li>
+          </span></li>
         </Link>
 
         <Link to={"/delete"}>
 
-          <li><a>
+          <li><span className='nav-section'>
             <i className="fas fa-tasks"></i>
             <span className="nav-item">Delete an employee</span>
-          </a></li>
+          </span></li>
         </Link>
         <Link to={"/login"}>
 
-          <li><a>
+          <li><span className='nav-section'>
             <i className="fas fa-tasks"></i>
             <span className="nav-item">Login</span>
-          </a></li>
+          </span></li>
         </Link>
 
-        <li><a className="logout" onClick={() => {LogoutFeature(); navigation('/login')}}>
+        <li><span className="logout nav-section" onClick={() => {Logout()}}>
           <i className="fas fa-sign-out-alt"></i>
           <span className="nav-item">Log out</span>
-        </a></li>
+        </span></li>
 
 
       </ul>
