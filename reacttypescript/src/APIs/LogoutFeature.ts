@@ -19,9 +19,6 @@ async function LogoutFeature(){
         if (!responseFromServer.success){
             throw new Error("Can't logout")
         }
-        else{
-            localStorage.removeItem('refreshToken');
-        }
         return "Successful";
         
     }catch(error){

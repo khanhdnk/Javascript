@@ -22,7 +22,7 @@ export function DeleteEmployeeCompo(){
     }, []);
 
     if (!accessGranted) {
-        return null; // or you can render a loading spinner or a message
+        return null;
     }
 
     async function handleSubmitDeleteEmployee (){

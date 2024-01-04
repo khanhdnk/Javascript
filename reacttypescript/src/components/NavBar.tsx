@@ -1,11 +1,4 @@
-// import Container from 'react-bootstrap/Container';
-// import Nav from 'react-bootstrap/Nav';
-// import Navbar from 'react-bootstrap/Navbar';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
-// import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from 'react-router-dom';
-// import { TestHTML } from '../App';
-// import { Button } from 'react-bootstrap';
 import downloadimg from './../image/downloading.png'
 import './../App.css'
 import apiIcon from './../image/api.png'
@@ -20,9 +13,6 @@ import { useEffect, useState } from 'react';
 export function Navbarhtml() {
   const [linkTo, setLinkTo] = useState<string>('/');
   const [isLogin, setIsLogin] = useState(1);
-  function Logout(){
-    Cookies.remove('token');
-  }
   const navigation = useNavigate();
   async function checkAuthenAndAuthor(url: string){
     let isEligible = await checkRefreshToken();
@@ -100,12 +90,7 @@ export function Navbarhtml() {
           </a></li>
         </Link>
 
-        {/* <li onClick={() => {setIsLogin(previous => previous + 1); console.log("hello")}}><a>
-            <i className="fas fa-tasks"></i>
-            <span className="nav-item">rerender</span>
-          </a></li> */}
-
-        <li><a className="logout" onClick={() => {LogoutFeature(); Logout(); navigation('/login')}}>
+        <li><a className="logout" onClick={() => {LogoutFeature(); navigation('/login')}}>
           <i className="fas fa-sign-out-alt"></i>
           <span className="nav-item">Log out</span>
         </a></li>

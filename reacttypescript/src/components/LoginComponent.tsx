@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import LoginFeature from "../APIs/LoginFeature";
-import Cookies from "js-cookie";
 import {useNavigate} from 'react-router-dom';
-import checkRefreshAndAccess from "../APIs/CheckRefreshAndAccess";
 import checkToken from "../APIs/validateToken";
 function LoginComponent(){
     const [userName, setUserName] = useState('');
@@ -20,7 +18,7 @@ function LoginComponent(){
             }
           };
           resultChecking();
-    });
+    },[login]);
     
     async function handleSubmitLogin() {
         const loginResult = await LoginFeature(userName, password);
