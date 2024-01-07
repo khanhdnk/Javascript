@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import LoginFeature from "../APIs/LoginFeature";
 import {useNavigate} from 'react-router-dom';
-import checkToken from "../APIs/validateToken";
+import validateToken from "../APIs/validateToken";
 function LoginComponent(){
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -10,13 +10,15 @@ function LoginComponent(){
     
     useEffect(() => {
         const resultChecking =async () => {
-            const result = await checkToken();
+            const result = await validateToken();
             if (result){
                 navigation('/')
+                console.log("chuyen sang get list")
             }else{
             }
           };
           resultChecking();
+
     },[login, navigation]);
     
     async function handleSubmitLogin() {

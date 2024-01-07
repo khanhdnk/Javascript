@@ -11,7 +11,8 @@ export function Navbarhtml() {
   const navigation = useNavigate();
 
   async function Logout(){
-    await LogoutFeature(); navigation('/login');  
+    await LogoutFeature(); 
+    navigation('/login');  
   }
 
   return (

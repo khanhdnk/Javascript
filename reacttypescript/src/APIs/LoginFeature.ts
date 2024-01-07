@@ -26,9 +26,6 @@ async function LoginFeature(userName: string, password: string){
         if (!responseFromServer.success){
             return false;
         }
-        else{
-
-        }
         return true;
         
     }catch(error){
